@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Musicals</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {});
+        </script>
+        <script>
+            $(() => {
+                $("#p1").css("color", "blue").text("Welcome!");
+
+                $("#b1").click(() => {
+                    $("#summerNights").append("<li>Did you get this far</li>");
+                });
+
+                $("ul")
+                    .on("mouseover", "li", function () {
+                        $(this).css("background-color", "yellow");
+                    })
+                    .on("mouseout", "li", function () {
+                        $(this).css("background-color", "");
+                    });
+
+                $("li")
+                    .mouseenter(function () {
+                        $(this).css("background-color", "yellow");
+                    })
+                    .mouseleave(function () {
+                        $(this).css("background-color", "white");
+                    });
+
+                $("#b2").click(() => {
+                    const lastItem = $("#summerNights li:last");
+                    lastItem.after("<li>Like does he have a car</li>");
+                });
+
+                $("#form1 input:button").click(() => {
+                    const formItems = $("#form1 input");
+                    let songText = formItems.eq(0).val();
+                    let linkText = formItems.eq(1).val();
+
+                    const table = $("table");
+                    table.append(
+                        `<tr>
+<td>` +
+                            songText +
+                            ` </td>
+<td>` +
+                            linkText +
+                            ` </td>                    
+</tr>                    
+                    `
+                    );
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p id="p1">Paragraph 1</p>
+        <ul id="summerNights">
+            <li>Summer loving had me a blast</li>
+            <li>Summer loving happened so fast</li>
+            <li>I met a girl crazy for me</li>
+            <li>Met a boy cute as can be</li>
+        </ul>
+        <button id="b1">Tell me more, tell me more</button>
+        <button id="b2">Tell me more, tell me more</button>
+        <table border="1">
+            <tr>
+                <th>song</th>
+                <th>link</th>
+            </tr>
+            <tr>
+                <td>Summer Nights</td>
+                <td>https://www.youtube.com/watch?v=ZW0DfsCzfq4</td>
+            </tr>
+        </table>
+        <form id="form1">
+            song: <input type="text" /> link: <input type="text" />
+            <input type="button" value="add" />
+        </form>
+    </body>
+</html>
