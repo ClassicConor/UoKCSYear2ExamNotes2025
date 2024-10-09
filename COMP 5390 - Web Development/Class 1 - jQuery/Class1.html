@@ -7,20 +7,15 @@
         </script>
         <script>
             $(() => {
+                // Task 1
                 $("#p1").css("color", "blue").text("Welcome!");
 
+                // Task 2
                 $("#b1").click(() => {
                     $("#summerNights").append("<li>Did you get this far</li>");
                 });
 
-                $("ul")
-                    .on("mouseover", "li", function () {
-                        $(this).css("background-color", "yellow");
-                    })
-                    .on("mouseout", "li", function () {
-                        $(this).css("background-color", "");
-                    });
-
+                // Task 3
                 $("li")
                     .mouseenter(function () {
                         $(this).css("background-color", "yellow");
@@ -29,29 +24,42 @@
                         $(this).css("background-color", "white");
                     });
 
+                // Task 4
                 $("#b2").click(() => {
                     const lastItem = $("#summerNights li:last");
                     lastItem.after("<li>Like does he have a car</li>");
                 });
 
+                // Task 5
                 $("#form1 input:button").click(() => {
-                    const formItems = $("#form1 input");
+                    const formItems = $("#form1 input:text");
                     let songText = formItems.eq(0).val();
                     let linkText = formItems.eq(1).val();
 
-                    const table = $("table");
-                    table.append(
-                        `<tr>
-<td>` +
-                            songText +
-                            ` </td>
-<td>` +
-                            linkText +
-                            ` </td>                    
-</tr>                    
-                    `
-                    );
+                    if (songText && linkText) {
+                        const table = $("table");
+                        table.append(
+                            `<tr>
+            <td>` +
+                                songText +
+                                ` </td>
+            <td>` +
+                                linkText +
+                                ` </td>
+            </tr>
+                                `
+                        );
+                    }
                 });
+
+                // Task 6
+                $("ul")
+                    .on("mouseover", "li", function () {
+                        $(this).css("background-color", "yellow");
+                    })
+                    .on("mouseout", "li", function () {
+                        $(this).css("background-color", "");
+                    });
             });
         </script>
     </head>
