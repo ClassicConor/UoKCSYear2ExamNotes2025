@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Songs</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $("#addBtn").click(function () {
+                    const title = $("#title").val();
+                    const link = $("#link").val();
+                    if (title.length > 0 && link.length > 0) {
+                        $("table").append(
+                            "<tr><td>" + title + "</td><td>" + link + "</tr>"
+                        );
+                    } else {
+                        alert("Please enter a song and link.");
+                    }
+                });
+
+                $("#run").click(function () {
+                    $.get(
+                        "http://raptor.kent.ac.uk/~cw734/ajax.php",
+                        function (data) {
+                            // Add the data
+                            const title = data[0];
+                            const link = data[1];
+
+                            $("table").append(
+                                "<tr><td>" + title + "</td><td>" + link + "</tr"
+                            );
+                        }
+                    ),
+                        "json";
+                });
+
+                $("#run").click(function () {
+                    if (Number.isInteger($("#numberBox").val())) {
+                        //Something here
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            function validateInput(input) {
+                // Replace anything that is not a digit (0-9) with an empty string
+                input.value = input.value.replace(/[^0-9]/g, "");
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <h2>Add a song into the table</h2>
+            Song: <input id="title" type="text" /> Link:
+            <input id="link" type="text" />
+            <input id="addBtn" type="button" value="Add" />
+            <br />
+            <input id="run" type="button" value="Run" />
+            <input id="numberBox" type="number" />
+        </form>
+        <table border="1">
+            <tr>
+                <th>Song title</th>
+                <th>Link</th>
+            </tr>
+            <tr>
+                <td>Summer Nights</td>
+                <td>https://www.youtube.com/watch?v=ZW0DfsCzfq4</td>
+            </tr>
+        </table>
+    </body>
+</html>

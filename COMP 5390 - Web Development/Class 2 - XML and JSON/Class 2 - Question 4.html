@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Leaderboard table</h1>
+
+        <table id="table1">
+            <tr>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+        </table>
+
+        <script>
+            const JSONLeaderBoard =
+                '[{"name":"Rachel", "points":54}, {"name":"Miranda", "points":66},{"name":"Bishop", "points":43}]';
+
+            let parsedLeaderboard = JSON.parse(JSONLeaderBoard);
+            console.log(parsedLeaderboard);
+
+            let table = document.getElementById("table1");
+
+            for (let i = 0; i < parsedLeaderboard.length; i++) {
+                console.log(parsedLeaderboard[i].points);
+
+                let row = table.insertRow(-1);
+                row.innerHTML = `<td>${parsedLeaderboard[i].name}</td><td>${parsedLeaderboard[i].points}</td>`;
+                table.appendChild(row);
+            }
+
+            const ObjLeaderBoard = [
+                { name: "Nick", points: 53 },
+                { name: "Roy", points: 45 },
+                { name: "ED-209", points: 49 },
+            ];
+
+            let leaderboard2 = JSON.stringify(ObjLeaderBoard);
+
+            for (let i = 0; i < parsedLeaderboard.length; i++) {
+                let row = table.insertRow(-1);
+                row.innerHTML = `<td>${ObjLeaderBoard[i].name}</td><td>${ObjLeaderBoard[i].points}</td>`;
+                table.appendChild(row);
+            }
+            alert(leaderboard2);
+
+            let mergedLeaderboard = parsedLeaderboard.concat(ObjLeaderBoard);
+            let stringifiedItem = JSON.stringify(mergedLeaderboard);
+
+            alert(stringifiedItem);
+        </script>
+    </body>
+</html>
